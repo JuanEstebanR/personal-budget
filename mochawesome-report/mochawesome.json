@@ -1,0 +1,409 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 12,
+    "passes": 12,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-09-25T20:10:46.918Z",
+    "end": "2023-09-25T20:10:47.110Z",
+    "duration": 192,
+    "testsRegistered": 12,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b5a2ea37-5ddc-483e-91de-7ecf6445606f",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "197b4418-9977-4f37-b545-dcefe1b8c72d",
+          "title": "POST /user/login",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should create a new user",
+              "fullTitle": "POST /user/login should create a new user",
+              "timedOut": false,
+              "duration": 68,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const responseUser = {\n    first_name: 'Julian',\n    last_name: 'Gomez',\n    user_name: 'JulianGomez',\n    budget: '$200.00'\n}\nconst result = await request(app).post('/user/login').send(user);\nassert.deepEqual(result.body, responseUser);",
+              "err": {},
+              "uuid": "807bf652-5852-4b48-b8c5-779e0f00d43f",
+              "parentUUID": "197b4418-9977-4f37-b545-dcefe1b8c72d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 400 if user already exists and an error creating user message",
+              "fullTitle": "POST /user/login should return a 400 if user already exists and an error creating user message",
+              "timedOut": false,
+              "duration": 8,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app).post('/user/login').send(user);\nconst message = { message: 'Error creating user' };\nassert.deepEqual(response.body, message);\nassert.equal(response.status, 400);",
+              "err": {},
+              "uuid": "d4f935ca-2a34-4c4a-b227-03a0d544915b",
+              "parentUUID": "197b4418-9977-4f37-b545-dcefe1b8c72d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "807bf652-5852-4b48-b8c5-779e0f00d43f",
+            "d4f935ca-2a34-4c4a-b227-03a0d544915b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 76,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        },
+        {
+          "uuid": "c7deb75a-7c27-4231-b07e-dd37c0d91635",
+          "title": "GET /user",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should return a user object",
+              "fullTitle": "GET /user should return a user object",
+              "timedOut": false,
+              "duration": 33,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const user_ = {\n    first_name: 'Julian',\n    last_name: 'Gomez',\n    user_name: 'JulianGomez',\n    budget: '$200.00'\n}\nconst result = await request(app).get(`/user?user=${user.user_name}`);\nassert.deepEqual(result.body, user_);",
+              "err": {},
+              "uuid": "0c1ca754-c6a5-452b-8177-6dfabb7fa0d4",
+              "parentUUID": "c7deb75a-7c27-4231-b07e-dd37c0d91635",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 404 if user does not exist",
+              "fullTitle": "GET /user should return a 404 if user does not exist",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userName = 'JulianGomez1';\nconst result = await request(app).get(`/user?user=${userName}`);\nassert.equal(result.status, 404);",
+              "err": {},
+              "uuid": "6ca206ae-e519-4cf6-b5b2-651443a76fa0",
+              "parentUUID": "c7deb75a-7c27-4231-b07e-dd37c0d91635",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "0c1ca754-c6a5-452b-8177-6dfabb7fa0d4",
+            "6ca206ae-e519-4cf6-b5b2-651443a76fa0"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 37,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        },
+        {
+          "uuid": "537b8528-55bf-4c40-a2f4-46ee8d0544ab",
+          "title": "POST /envelope",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should create a new envelope and response with a json",
+              "fullTitle": "POST /envelope should create a new envelope and response with a json",
+              "timedOut": false,
+              "duration": 7,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app).post(`/envelope?user=${user.user_name}`).send(envelope);\nassert.deepEqual(response.body, envelope);",
+              "err": {},
+              "uuid": "73ec8510-9d3d-43db-a007-c3657feb008f",
+              "parentUUID": "537b8528-55bf-4c40-a2f4-46ee8d0544ab",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 404 if the user doesnt exists",
+              "fullTitle": "POST /envelope should return a 404 if the user doesnt exists",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userName = 'JulianGomez1';\nconst response = await request(app).post(`/envelope?user=${userName}`).send(envelope);\nassert.equal(response.status, 404);",
+              "err": {},
+              "uuid": "b0ca90ca-421f-457b-9c56-9e0b91f0dea0",
+              "parentUUID": "537b8528-55bf-4c40-a2f4-46ee8d0544ab",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 400 if envelope already exists",
+              "fullTitle": "POST /envelope should return a 400 if envelope already exists",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app).post(`/envelope?user=${user.user_name}`).send(envelope);\nassert.equal(response.status, 400);",
+              "err": {},
+              "uuid": "76880678-55fb-40d0-9b39-3b4b2bbcd861",
+              "parentUUID": "537b8528-55bf-4c40-a2f4-46ee8d0544ab",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "73ec8510-9d3d-43db-a007-c3657feb008f",
+            "b0ca90ca-421f-457b-9c56-9e0b91f0dea0",
+            "76880678-55fb-40d0-9b39-3b4b2bbcd861"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 18,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        },
+        {
+          "uuid": "96b71d3f-f1eb-4d8f-a23f-3f5497e43b65",
+          "title": "DELETE /envelope",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should delete an envelope and response with a json",
+              "fullTitle": "DELETE /envelope should delete an envelope and response with a json",
+              "timedOut": false,
+              "duration": 33,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app).delete(`/envelope?user=${user.user_name}&name=${envelope.name}`);\nassert.deepEqual(response.body, envelope);",
+              "err": {},
+              "uuid": "f6601a84-1e18-49af-9f77-cc77eabb6286",
+              "parentUUID": "96b71d3f-f1eb-4d8f-a23f-3f5497e43b65",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f6601a84-1e18-49af-9f77-cc77eabb6286"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 33,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        },
+        {
+          "uuid": "70efc217-9f42-4108-8f74-cc8b976695d2",
+          "title": "PUT /user",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should update the user name and response with a json",
+              "fullTitle": "PUT /user should update the user name and response with a json",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const newUserName = 'JGomez12';\nconst response = await request(app).put(`/user?user=${user.user_name}`).send({user_name: newUserName});\nassert.equal(response.status, 200);\nassert.deepEqual(response.body, {first_name: 'Julian', last_name: 'Gomez', user_name: newUserName});",
+              "err": {},
+              "uuid": "66b6f781-0d57-46c6-971c-08b119c34529",
+              "parentUUID": "70efc217-9f42-4108-8f74-cc8b976695d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 404 if user does not exist",
+              "fullTitle": "PUT /user should return a 404 if user does not exist",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userName = 'JulianGomez1';\nconst response = await request(app).put(`/user?user=${userName}`);\nassert.equal(response.status, 404);",
+              "err": {},
+              "uuid": "29268c28-eb57-40ca-9485-c6c7d0f6aef3",
+              "parentUUID": "70efc217-9f42-4108-8f74-cc8b976695d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "66b6f781-0d57-46c6-971c-08b119c34529",
+            "29268c28-eb57-40ca-9485-c6c7d0f6aef3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        },
+        {
+          "uuid": "6ca1c4b1-22cd-45aa-bd31-003864b21d9c",
+          "title": "DELETE /user",
+          "fullFile": "C:\\Users\\Juan Esteban Rozo\\Desktop\\CodeAcademyProjects\\personal-budget\\test\\test.js",
+          "file": "\\test\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should delete a user and should return a json",
+              "fullTitle": "DELETE /user should delete a user and should return a json",
+              "timedOut": false,
+              "duration": 4,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const newUserName = 'JGomez12';\nconst responseUser = {\n    first_name: 'Julian',\n    last_name: 'Gomez',\n    user_name: 'JGomez12',\n}\nconst result = await request(app).delete(`/user?user=${newUserName}`);\nassert.equal(result.status, 200);\nassert.deepEqual(result.body, responseUser);",
+              "err": {},
+              "uuid": "bd1f5605-563b-4994-bbbe-da3fae38f577",
+              "parentUUID": "6ca1c4b1-22cd-45aa-bd31-003864b21d9c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should return a 404 if user does not exist",
+              "fullTitle": "DELETE /user should return a 404 if user does not exist",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const userName = 'JulianGomez1';\nconst result = await request(app).delete(`/user?user=${userName}`);\nassert.equal(result.status, 404);",
+              "err": {},
+              "uuid": "98c6e0f5-4b9c-4d6d-83e1-b22f342f1ba1",
+              "parentUUID": "6ca1c4b1-22cd-45aa-bd31-003864b21d9c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bd1f5605-563b-4994-bbbe-da3fae38f577",
+            "98c6e0f5-4b9c-4d6d-83e1-b22f342f1ba1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 4000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 4000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
